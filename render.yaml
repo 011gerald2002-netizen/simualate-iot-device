@@ -1,2 +1,8 @@
-requests
-schedule
+services:
+  - type: web
+    name: my-service
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python app.py
+    autoDeploy: true
