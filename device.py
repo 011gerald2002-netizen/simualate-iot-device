@@ -61,16 +61,39 @@ def update_weather():
 # PAYLOAD
 # ===============================
 def generate_payload():
+    if not cached_is_raining:
+        rain_density = "Dry"
+        soil = "Dry"
+        tilt = round(random.uniform(1.0, 3.0), 2)
+        vibration = "No"
+    else:
+        if cached_rain_intensity < 0.5:
+            rain_density = "Light"
+            soil = "Wet"
+            tilt = round(random.uniform(1.0, 3.0), 2)
+            vibration = "No"
+        elif cached_rain_intensity < 2:
+            rain_density = "Moderate"
+            soil = "Wet"
+            tilt = round(random.uniform(1.0, 3.0), 2)
+            vibration = "No"
+        else:
+            rain_density = "Heavy"
+            soil = "Saturated"
+            tilt = round(random.uniform(1.0, 3.0), 2)
+            vibration = "No"
+
     return {
         "timestamp": datetime.now(timezone.utc).isoformat(),
         "source": DEVICE_SOURCE,
-        "Soil moisture": "Wet" if cached_is_raining else "Dry",
-        "Rain density": "Heavy" if cached_rain_intensity > 2 else "Light",
-        "Tilt": round(random.uniform(1.0, 3.0), 2),
-        "Vibration": "No",
+        "Soil moisture": soil,
+        "Rain density": rain_density,
+        "Tilt": tilt,
+        "Vibration": vibration,
         "lat": LATITUDE,
         "lng": LONGITUDE
     }
+
 
 # ===============================
 # SEND DATA
