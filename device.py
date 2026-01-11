@@ -91,7 +91,7 @@ def run_scheduler():
     print("🧠 Scheduler started")
     update_weather()
     schedule.every(30).minutes.do(update_weather)
-    schedule.every(30).minutes.do(send_data)
+    schedule.every(3).seconds.do(send_data)
 
     while True:
         try:
