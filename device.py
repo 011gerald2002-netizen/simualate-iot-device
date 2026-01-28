@@ -9,7 +9,7 @@ print("📡 Device module loaded")
 # ===============================
 # BACKEND CONFIG
 # ===============================
-API_URL = "https://landslidedetectionsystem.onrender.com/api/iot-data"
+API_URL = "https://landslidedetectionsystem-u0t5.onrender.com/"
 DEVICE_SOURCE = "A"
 LATITUDE = 14.091178
 LONGITUDE = 120.971315
